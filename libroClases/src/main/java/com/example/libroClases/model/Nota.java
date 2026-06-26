@@ -9,20 +9,23 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "usuarios")
+@Table(name = "notas")
 @Data
-public class Usuario {
+public class Nota {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(nullable = false, unique = true)
-	private String correo;
+	@Column(nullable = false)
+	private Long idEstudiante;
 
 	@Column(nullable = false)
-	private String password;
+	private Long idDocente;
 
 	@Column(nullable = false)
-	private String rol;
+	private Double valorNota;
+
+	@Column(nullable = false)
+	private Long idAsignatura;
 }
