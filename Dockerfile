@@ -2,7 +2,8 @@ FROM eclipse-temurin:24-jre-alpine
 
 WORKDIR /app
 
-COPY target/libroClases-0.0.1-SNAPSHOT.jar app.jar
+
+COPY libroClases-0.0.1-SNAPSHOT.jar app.jar
 
 ENTRYPOINT ["java", "-jar", "app.jar"]
 

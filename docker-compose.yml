@@ -1,0 +1,59 @@
+version: '3.9'
+
+services:
+  # Servicio de la aplicación SIGED
+  app:
+    # Construye la imagen desde el Dockerfile de la raíz del proyecto
+    build:
+      context: .
+      dockerfile: Dockerfile
+    
+    # Nombre del contenedor
+    container_name: siged-backend
+    
+    # Mapeo de puertos: contenedor:host
+    # Expone el puerto 8081 del contenedor al puerto 8081 de la máquina local
+    ports:
+      - "8081:8081"
+    
+    # Variables de entorno para Spring Boot
+    environment:
+      # URL de conexión a MySQL en Laragon (usando host.docker.internal)
+      SPRING_DATASOURCE_URL: jdbc:mysql://host.docker.internal:3306/siged_db?useSSL=false&serverTimezone=UTC
+      
+      # Credenciales de la base de datos
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: ""
+      
+      # Driver MySQL
+      SPRING_DATASOURCE_DRIVER_CLASS_NAME: com.mysql.cj.jdbc.Driver
+      
+      # Configuración JPA/Hibernate
+      SPRING_JPA_DATABASE_PLATFORM: org.hibernate.dialect.MySQLDialect
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_SHOW_SQL: "true"
+      
+      # Codificación UTF-8
+      SPRING_MESSAGES_ENCODING: UTF-8
+      
+      # Puerto de la aplicación
+      SERVER_PORT: 8081
+    
+    # Red interna para comunicación fluida
+    networks:
+      - siged-network
+    
+    # Reinicia automáticamente si falla
+    restart: unless-stopped
+    
+    # Logs
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
+        max-file: "3"
+
+# Definición de la red interna
+networks:
+  siged-network:
+    driver: bridge
