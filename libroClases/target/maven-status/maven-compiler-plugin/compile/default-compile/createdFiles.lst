@@ -1,0 +1,17 @@
+com\example\libroClases\controller\NotaController.class
+com\example\libroClases\service\UsuarioService.class
+com\example\libroClases\repository\NotaRepository.class
+com\example\libroClases\repository\MensajeRepository.class
+com\example\libroClases\model\Nota.class
+com\example\libroClases\repository\UsuarioRepository.class
+com\example\libroClases\service\MensajeService.class
+com\example\libroClases\model\Mensaje.class
+com\example\libroClases\controller\UsuarioController.class
+com\example\libroClases\repository\AnotacionRepository.class
+com\example\libroClases\LibroClasesApplication.class
+com\example\libroClases\controller\MensajeController.class
+com\example\libroClases\service\NotaService.class
+com\example\libroClases\model\Anotacion.class
+com\example\libroClases\controller\AnotacionController.class
+com\example\libroClases\model\Usuario.class
+com\example\libroClases\service\AnotacionService.class
